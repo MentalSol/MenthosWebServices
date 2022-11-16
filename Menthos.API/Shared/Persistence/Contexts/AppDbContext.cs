@@ -34,7 +34,7 @@ public class AppDbContext : DbContext
         builder.Entity<Teacher>().HasKey(p => p.Id);
         builder.Entity<Teacher>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Teacher>().Property(p => p.Name).IsRequired().HasMaxLength(50);
-        builder.Entity<Teacher>().Property(p => p.Lastname).IsRequired().HasMaxLength(50);
+        builder.Entity<Teacher>().Property(p => p.LastName).IsRequired().HasMaxLength(50);
         builder.Entity<Teacher>().Property(p => p.Username).IsRequired().HasMaxLength(30);
         builder.Entity<Teacher>().Property(p => p.Codigo).IsRequired().HasMaxLength(10);
 
@@ -43,7 +43,7 @@ public class AppDbContext : DbContext
         builder.Entity<Student>().HasKey(p => p.Id);
         builder.Entity<Student>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Student>().Property(p => p.Name).IsRequired().HasMaxLength(50);
-        builder.Entity<Student>().Property(p => p.Lastname).IsRequired().HasMaxLength(50);
+        builder.Entity<Student>().Property(p => p.LastName).IsRequired().HasMaxLength(50);
         builder.Entity<Student>().Property(p => p.Username).IsRequired().HasMaxLength(30);
         builder.Entity<Student>().Property(p => p.Codigo).IsRequired().HasMaxLength(10);
         // Apply Snake Case Naming Convention
