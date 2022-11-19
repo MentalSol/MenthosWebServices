@@ -32,7 +32,7 @@ public class TeacherService : ITeacherService
     {
         var teacher = await _teacherRepository.FindByUsernameAsync(request.Username);
         Console.WriteLine($"Request: {request.Username}, {request.Password}");
-        Console.WriteLine($"Teacher: {teacher.Id}, {teacher.Name}, {teacher.LastName}, {teacher.Username}, {teacher.Codigo}, {teacher.PasswordHash}");
+        Console.WriteLine($"Teacher: {teacher.Id}, {teacher.Name}, {teacher.LastName}, {teacher.Username}, {teacher.Codigo}, {teacher.email}, {teacher.telephone}, {teacher.PasswordHash}");
         
         // validate
         if (teacher == null || !BCryptNet.Verify(request.Password, teacher.PasswordHash))
@@ -44,7 +44,7 @@ public class TeacherService : ITeacherService
         Console.WriteLine("Authentication successful. About to generate token");
         // authentication successful
         var response = _mapper.Map<AuthenticateResponse>(teacher);
-        Console.WriteLine($"Response: {response.Id}, {response.Name}, {response.LastName}, {response.Username}, {response.Codigo}");
+        Console.WriteLine($"Response: {response.Id}, {response.Name}, {response.LastName}, {response.Username}, {response.Codigo}, {response.email}, {response.telephone}");
         response.Token = _jwtHandler.GenerateToken(teacher);
         Console.WriteLine($"Generated token is {response.Token}");
         return response;

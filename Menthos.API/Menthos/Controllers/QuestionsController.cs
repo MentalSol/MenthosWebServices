@@ -12,7 +12,7 @@ namespace Menthos.API.Menthos.Controllers;
 [ApiController]
 [Route("/api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
-[SwaggerTag("Create, read, update and delete Categories")]
+[SwaggerTag("Create, read, update and delete Questions")]
 
 public class QuestionsController : ControllerBase
 {

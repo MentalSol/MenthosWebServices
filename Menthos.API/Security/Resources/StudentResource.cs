@@ -7,4 +7,6 @@ public class StudentResource
     public string LastName { get; set; }
     public string Username { get; set; }
     public string Codigo { get; set; }
+    public string email { get; set; }
+    public int telephone { get; set; }
 }

@@ -32,7 +32,7 @@ public class StudentService : IStudentService
     {
         var student = await _studentRepository.FindByUsernameAsync(request.Username);
         Console.WriteLine($"Request: {request.Username}, {request.Password}");
-        Console.WriteLine($"Student: {student.Id}, {student.Name}, {student.LastName}, {student.Username}, {student.Codigo}, {student.PasswordHash}");
+        Console.WriteLine($"Student: {student.Id}, {student.Name}, {student.LastName}, {student.Username}, {student.Codigo}, {student.email}, {student.telephone}, {student.PasswordHash}");
         
         // validate
         if (student == null || !BCryptNet.Verify(request.Password, student.PasswordHash))
@@ -44,7 +44,7 @@ public class StudentService : IStudentService
         Console.WriteLine("Authentication successful. About to generate token");
         // authentication successful
         var response = _mapper.Map<AuthenticateResponse>(student);
-        Console.WriteLine($"Response: {response.Id}, {response.Name}, {response.LastName}, {response.Username}, {response.Codigo}");
+        Console.WriteLine($"Response: {response.Id}, {response.Name}, {response.LastName}, {response.Username}, {response.Codigo}, {response.email}, {response.telephone}");
         response.Token = _jwtHandler.GenerateToken(student);
         Console.WriteLine($"Generated token is {response.Token}");
         return response;
@@ -58,7 +58,7 @@ public class StudentService : IStudentService
     public async Task<Student> GetByIdAsync(int id)
     {
         var student = await _studentRepository.FindByIdAsync(id);
-        if (student == null) throw new KeyNotFoundException("User not found");
+        if (student == null) throw new KeyNotFoundException("Student not found");
         return student;
     }
 

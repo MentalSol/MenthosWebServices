@@ -14,5 +14,14 @@ public class RegisterRequest
     public string Username { get; set; }
 
     [Required]
+    public string Codigo { get; set; }
+    
+    [Required]
+    public string email { get; set; }
+    
+    [Required]
+    public int telephone { get; set; }
+
+    [Required]
     public string Password { get; set; }
 }

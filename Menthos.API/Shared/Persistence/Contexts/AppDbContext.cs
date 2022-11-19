@@ -8,7 +8,6 @@ namespace Menthos.API.Shared.Persistence.Contexts;
 public class AppDbContext : DbContext
 {
     public DbSet<Question> Questions { get; set; }
-    
     public DbSet<Teacher> Teachers { get; set; }
     public DbSet<Student> Students { get; set; }
 
@@ -26,7 +25,7 @@ public class AppDbContext : DbContext
         builder.Entity<Question>().HasKey(p => p.Id);
         builder.Entity<Question>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Question>().Property(p => p.Content).IsRequired().HasMaxLength(300);
-        
+
         //Users
         
         //Teachers
@@ -37,6 +36,8 @@ public class AppDbContext : DbContext
         builder.Entity<Teacher>().Property(p => p.LastName).IsRequired().HasMaxLength(50);
         builder.Entity<Teacher>().Property(p => p.Username).IsRequired().HasMaxLength(30);
         builder.Entity<Teacher>().Property(p => p.Codigo).IsRequired().HasMaxLength(10);
+        builder.Entity<Teacher>().Property(p => p.email).IsRequired().HasMaxLength(30);
+        builder.Entity<Teacher>().Property(p => p.telephone).IsRequired().HasMaxLength(9);
 
         //Students
         builder.Entity<Student>().ToTable("Students");
@@ -46,6 +47,8 @@ public class AppDbContext : DbContext
         builder.Entity<Student>().Property(p => p.LastName).IsRequired().HasMaxLength(50);
         builder.Entity<Student>().Property(p => p.Username).IsRequired().HasMaxLength(30);
         builder.Entity<Student>().Property(p => p.Codigo).IsRequired().HasMaxLength(10);
+        builder.Entity<Student>().Property(p => p.email).IsRequired().HasMaxLength(30);
+        builder.Entity<Student>().Property(p => p.telephone).IsRequired().HasMaxLength(9);
         // Apply Snake Case Naming Convention
         
         builder.UseSnakeCaseNamingConvention();
