@@ -22,8 +22,16 @@ public class QuestionService : IQuestionService
         return await _questionRepository.ListAsync();
     }
 
-    
+    public async Task<IEnumerable<Question>> ListByStudentIdAsync(int studentId)
+    {
+        return await _questionRepository.FindByStudentIdAsync(studentId);
+    }
 
+    public async Task<IEnumerable<Question>> ListBySubjectIdAsync(int subjectId)
+    {
+        return await _questionRepository.FindBySubjectIdAsync(subjectId);
+    }
+    
     public async Task<QuestionResponse> SaveAsync(Question question)
     {
         // Validate Content

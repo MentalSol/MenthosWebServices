@@ -15,6 +15,7 @@ public class QuestionRepository : BaseRepository, IQuestionRepository
     public async Task<IEnumerable<Question>> ListAsync()
     {
         return await _context.Questions
+            .Include(p=>p.Student)
             .ToListAsync();
     }
 
@@ -26,15 +27,33 @@ public class QuestionRepository : BaseRepository, IQuestionRepository
     public async Task<Question> FindByIdAsync(int questionId)
     {
         return await _context.Questions
+            .Include(p=>p.Student)
             .FirstOrDefaultAsync(p => p.Id == questionId);
     }
 
     public async Task<Question> FindByContentAsync(string content)
     {
         return await _context.Questions
+            .Include(p=>p.Student)
             .FirstOrDefaultAsync(p => p.Content == content);
     }
 
+    public async Task<IEnumerable<Question>> FindByStudentIdAsync(int studentId)
+    {
+        return await _context.Questions
+            .Where(p => p.StudentId == studentId)
+            .Include(p => p.Student)
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<Question>> FindBySubjectIdAsync(int subjectId)
+    {
+        return await _context.Questions
+            .Where(p => p.SubjectId == subjectId)
+            .Include(p => p.Student)
+            .ToListAsync();
+    }
+    
     public void Update(Question question)
     {
         _context.Questions.Update(question);

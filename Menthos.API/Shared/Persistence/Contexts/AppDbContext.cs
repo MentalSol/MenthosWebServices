@@ -9,6 +9,7 @@ public class AppDbContext : DbContext
 {
     public DbSet<Question> Questions { get; set; }
     public DbSet<Answer> Answers { get; set; }
+    public DbSet<Subject> Subjects { get; set; }
     public DbSet<Teacher> Teachers { get; set; }
     public DbSet<Student> Students { get; set; }
 
@@ -39,6 +40,18 @@ public class AppDbContext : DbContext
         builder.Entity<Answer>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Answer>().Property(p => p.Content).IsRequired();
         
+        // Subjects
+        builder.Entity<Subject>().ToTable("Subjects");
+        builder.Entity<Subject>().HasKey(p => p.Id);
+        builder.Entity<Subject>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Subject>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+        builder.Entity<Subject>().Property(p => p.Image);
+        
+        builder.Entity<Subject>()
+            .HasMany(p => p.Questions)
+            .WithOne(p => p.Subject)
+            .HasForeignKey(p => p.SubjectId);
+        
         // Users
         
         //Teachers
@@ -62,8 +75,11 @@ public class AppDbContext : DbContext
         builder.Entity<Student>().Property(p => p.Codigo).IsRequired().HasMaxLength(10);
         builder.Entity<Student>().Property(p => p.email).IsRequired().HasMaxLength(30);
         builder.Entity<Student>().Property(p => p.telephone).IsRequired().HasMaxLength(9);
-        
-        
+
+        builder.Entity<Student>()
+            .HasMany(p => p.Questions)
+            .WithOne(p => p.Student)
+            .HasForeignKey(p => p.StudentId);
         // Apply Snake Case Naming Convention
         
         builder.UseSnakeCaseNamingConvention();

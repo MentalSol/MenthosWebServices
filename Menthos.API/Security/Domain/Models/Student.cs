@@ -15,4 +15,8 @@ public class Student
 
     [JsonIgnore]
     public string PasswordHash { get; set; }
+    
+    // Relationships
+
+    public IList<Question> Questions { get; set; } = new List<Question>();
 }

@@ -10,5 +10,6 @@ public class ResourceToModelProfile : Profile
     {
         CreateMap<SaveQuestionResource, Question>();
         CreateMap<SaveAnswerResource, Answer>();
+        CreateMap<SaveSubjectResource, Subject>();
     }
 }
