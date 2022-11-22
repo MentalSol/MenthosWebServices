@@ -9,4 +9,5 @@ public class Subject
     //Relationships
 
     public IList<Question> Questions { get; set; } = new List<Question>();
+    public IList<Video> Videos { get; set; } = new List<Video>();
 }

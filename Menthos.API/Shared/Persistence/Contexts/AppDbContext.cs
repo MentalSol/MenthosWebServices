@@ -10,6 +10,8 @@ public class AppDbContext : DbContext
     public DbSet<Question> Questions { get; set; }
     public DbSet<Answer> Answers { get; set; }
     public DbSet<Subject> Subjects { get; set; }
+    public DbSet<Video> Videos { get; set; }
+    public DbSet<Comment> Comments { get; set; }
     public DbSet<Teacher> Teachers { get; set; }
     public DbSet<Student> Students { get; set; }
 
@@ -51,6 +53,27 @@ public class AppDbContext : DbContext
             .HasMany(p => p.Questions)
             .WithOne(p => p.Subject)
             .HasForeignKey(p => p.SubjectId);
+        builder.Entity<Subject>()
+            .HasMany(p => p.Videos)
+            .WithOne(p => p.Subject)
+            .HasForeignKey(p => p.SubjectId);
+        
+        // Videos
+        builder.Entity<Video>().ToTable("Videos");
+        builder.Entity<Video>().HasKey(p => p.Id);
+        builder.Entity<Video>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Video>().Property(p => p.Link).IsRequired();
+
+        builder.Entity<Video>()
+            .HasMany(p => p.Comments)
+            .WithOne(p => p.Video)
+            .HasForeignKey(p => p.VideoId);
+        
+        // Comments
+        builder.Entity<Comment>().ToTable("Comments");
+        builder.Entity<Comment>().HasKey(p => p.Id);
+        builder.Entity<Comment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Comment>().Property(p => p.MessageC).IsRequired().HasMaxLength(200);
         
         // Users
         
@@ -65,6 +88,11 @@ public class AppDbContext : DbContext
         builder.Entity<Teacher>().Property(p => p.email).IsRequired().HasMaxLength(30);
         builder.Entity<Teacher>().Property(p => p.telephone).IsRequired().HasMaxLength(9);
 
+        builder.Entity<Teacher>()
+            .HasMany(p => p.Videos)
+            .WithOne(p => p.Teacher)
+            .HasForeignKey(p => p.TeacherId);
+        
         //Students
         builder.Entity<Student>().ToTable("Students");
         builder.Entity<Student>().HasKey(p => p.Id);
@@ -78,6 +106,10 @@ public class AppDbContext : DbContext
 
         builder.Entity<Student>()
             .HasMany(p => p.Questions)
+            .WithOne(p => p.Student)
+            .HasForeignKey(p => p.StudentId);
+        builder.Entity<Student>()
+            .HasMany(p => p.Comments)
             .WithOne(p => p.Student)
             .HasForeignKey(p => p.StudentId);
         // Apply Snake Case Naming Convention

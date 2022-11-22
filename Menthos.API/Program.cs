@@ -1,6 +1,7 @@
 using Menthos.API.Menthos.Domain.Repositories;
 using Menthos.API.Menthos.Domain.Services;
 using Menthos.API.Menthos.Persistence.Repositories;
+using Menthos.API.Menthos.Resources;
 using Menthos.API.Menthos.Services;
 using Menthos.API.Security.Authorization.Handlers.Implementations;
 using Menthos.API.Security.Authorization.Handlers.Interfaces;
@@ -101,6 +102,8 @@ builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
 builder.Services.AddScoped<IAnswerService, AnswerService>();
 builder.Services.AddScoped<ISubjectRepository, SubjectRepository>();
 builder.Services.AddScoped<ISubjectService, SubjectService>();
+builder.Services.AddScoped<IVideoRepository, VideoRepository>();
+builder.Services.AddScoped<IVideoService, VideoService>();
 
 // Security Injection Configuration
 

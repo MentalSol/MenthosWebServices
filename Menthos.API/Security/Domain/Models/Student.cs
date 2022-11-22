@@ -19,4 +19,6 @@ public class Student
     // Relationships
 
     public IList<Question> Questions { get; set; } = new List<Question>();
+
+    public IList<Comment> Comments { get; set; } = new List<Comment>();
 }

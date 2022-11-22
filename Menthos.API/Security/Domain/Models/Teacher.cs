@@ -16,4 +16,8 @@ public class Teacher
     [JsonIgnore]
     public string PasswordHash { get; set; }
     
+    // Relationships
+    
+    public IList<Video> Videos { get; set; } = new List<Video>();
+    
 }

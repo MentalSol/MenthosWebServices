@@ -27,9 +27,9 @@ public class SubjectQuestionsController
         OperationId = "GetSubjectQuestions",
         Tags = new[] { "Subjects"}
     )]
-    public async Task<IEnumerable<QuestionResource>> GetAllBySubjectIdAsync(int studentId)
+    public async Task<IEnumerable<QuestionResource>> GetAllBySubjectIdAsync(int subjectId)
     {
-        var questions = await _questionService.ListBySubjectIdAsync(studentId);
+        var questions = await _questionService.ListBySubjectIdAsync(subjectId);
 
         var resources = _mapper.Map<IEnumerable<Question>, IEnumerable<QuestionResource>>(questions);
 

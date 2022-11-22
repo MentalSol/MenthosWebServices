@@ -1,9 +1,6 @@
-using System.Net.Mime;
 using AutoMapper;
 using Menthos.API.Menthos.Domain.Models;
-using Menthos.API.Menthos.Domain.Repositories;
 using Menthos.API.Menthos.Domain.Services;
-using Menthos.API.Menthos.Domain.Services.Communication;
 using Menthos.API.Menthos.Resources;
 using Menthos.API.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
