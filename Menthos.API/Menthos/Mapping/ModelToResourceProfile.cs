@@ -13,5 +13,6 @@ public class ModelToResourceProfile : Profile
         CreateMap<Answer, AnswerResource>();
         CreateMap<Subject, SubjectResource>();
         CreateMap<Video, VideoResource>();
+        CreateMap<Comment, CommentResource>();
     }
 }
