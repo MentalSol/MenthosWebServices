@@ -10,5 +10,6 @@ public class ModelToResourceProfile : Profile
     public ModelToResourceProfile()
     {
         CreateMap<Question, QuestionResource>();
+        CreateMap<Answer, AnswerResource>();
     }
 }
