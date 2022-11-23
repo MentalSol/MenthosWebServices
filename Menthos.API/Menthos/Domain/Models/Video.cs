@@ -1,4 +1,4 @@
-using Menthos.API.Security.Domain.Models;
+using Menthos.API.Menthos.Domain.Models;
 
 namespace Menthos.API.Menthos.Domain.Models;
 
