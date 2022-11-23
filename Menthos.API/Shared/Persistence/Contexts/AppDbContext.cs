@@ -30,7 +30,6 @@ public class AppDbContext : DbContext
         builder.Entity<Question>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Question>().Property(p => p.Content).IsRequired().HasMaxLength(300);
         
-        // Relationships
         builder.Entity<Question>()
             .HasMany(p => p.Answers)
             .WithOne(p => p.Question)
