@@ -1,11 +1,8 @@
-using Menthos.API.Security.Domain.Models;
-using Menthos.API.Security.Domain.Services.Communication;
-
-namespace Menthos.API.Security.Domain.Services;
+using Menthos.API.Menthos.Domain.Models;
+using Menthos.API.Menthos.Domain.Services.Communication;
 
 public interface ITeacherService
 {
-    Task<AuthenticateResponse> Authenticate(AuthenticateRequest model);
     Task<IEnumerable<Teacher>> ListAsync();
     Task<Teacher> GetByIdAsync(int id);
     Task RegisterAsync(RegisterRequest model);
