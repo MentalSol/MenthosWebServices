@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using Menthos.API.Menthos.Domain.Models;
 
@@ -19,5 +20,6 @@ public class Teacher
     // Relationships
     
     public IList<Video> Videos { get; set; } = new List<Video>();
+    
     
 }

@@ -74,7 +74,7 @@ public class AppDbContext : DbContext
         builder.Entity<Comment>().HasKey(p => p.Id);
         builder.Entity<Comment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Comment>().Property(p => p.MessageC).IsRequired().HasMaxLength(200);
-        
+
         // Users
         
         //Teachers
@@ -92,7 +92,7 @@ public class AppDbContext : DbContext
             .HasMany(p => p.Videos)
             .WithOne(p => p.Teacher)
             .HasForeignKey(p => p.TeacherId);
-        
+
         //Students
         builder.Entity<Student>().ToTable("Students");
         builder.Entity<Student>().HasKey(p => p.Id);

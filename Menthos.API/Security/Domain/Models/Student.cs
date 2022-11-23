@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using Menthos.API.Menthos.Domain.Models;
 
@@ -21,4 +22,5 @@ public class Student
     public IList<Question> Questions { get; set; } = new List<Question>();
 
     public IList<Comment> Comments { get; set; } = new List<Comment>();
+    
 }
