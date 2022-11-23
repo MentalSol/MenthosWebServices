@@ -23,6 +23,11 @@
 	
 	<ItemGroup>
 		<Folder Include="Menthos\Persistence\Contexts" />
+		<Folder Include="Security\Domain\Models" />
+		<Folder Include="Security\Domain\Repositories" />
+		<Folder Include="Security\Persistence\Repositories" />
+		<Folder Include="Security\Resources" />
+		<Folder Include="Security\Services" />
 	</ItemGroup>
 	
 </Project>
