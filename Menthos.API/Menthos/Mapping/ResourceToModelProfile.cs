@@ -13,5 +13,7 @@ public class ResourceToModelProfile : Profile
         CreateMap<SaveSubjectResource, Subject>();
         CreateMap<SaveVideoResource, Video>();
         CreateMap<SaveCommentResource, Comment>();
+        CreateMap<SaveTeacherResource, Teacher>();
+        CreateMap<SaveStudentResource, Student>();
     }
 }
