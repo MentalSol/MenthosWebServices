@@ -1,7 +1,6 @@
 using Menthos.API.Menthos.Domain.Repositories;
 using Menthos.API.Menthos.Domain.Services;
 using Menthos.API.Menthos.Persistence.Repositories;
-using Menthos.API.Menthos.Resources;
 using Menthos.API.Menthos.Services;
 using Menthos.API.Security.Authorization.Handlers.Implementations;
 using Menthos.API.Security.Authorization.Handlers.Interfaces;
